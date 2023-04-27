@@ -1,24 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import { Routes, Route, useNavigate} from 'react-router-dom';
+
+import Login from './components/Login';
+import Manager from './components/Manager';
+import Admin from './components/Admin';
+import User from './components/User';
+import data from './components/data.json'
 
 function App() {
+  
+  const [ inputUser, setInputUser ] = useState({
+    usernameInput : "",
+    passwordInput : ""
+  });
+
+  const [ dataLogin, setDataLogin ] = useState({})
+  const navigate = useNavigate();
+
+  const handleLogin = () =>{
+    
+    for(let i = 0; i < data.dataUser.length ; i++){
+      if(data.dataUser[i].username == inputUser.usernameInput && data.dataUser[i].password == inputUser.passwordInput){
+          // alert(`bisa bang ${data.dataUser[i].name} ${data.dataUser[i].access}`)
+          setDataLogin(data.dataUser[i])
+          navigate(`/${data.dataUser[i].access}`)
+          // console.log(data.dataUser[i])
+      } else {
+        console.log('eror bang')
+      }
+    }
+  }
+  // console.log(inputUser.usernameInput)
+  // console.log(dataLogin)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Routes >
+        <Route path='/' element={<Login handleLogin={handleLogin} inputUser={inputUser} setInputUser={setInputUser}/> } />
+
+        <Route path='/manager' element={<Manager dataLogin={dataLogin}/>}/>
+
+        <Route path='/admin' element={<Admin dataLogin={dataLogin}/>}/>
+
+        <Route path='/user' element={<User dataLogin={dataLogin}/>}/>
+      </Routes>
   );
 }
 

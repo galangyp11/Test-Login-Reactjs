@@ -1,0 +1,44 @@
+{
+    "dataUser":[
+        {
+           "level":"1",
+           "access": "manager",
+           "id": "01",
+           "username": "hengky",
+           "password": "hengky123",
+           "name": "Hengky"
+          },
+          {
+            "level":"2",
+            "access": "admin",
+            "id": "02",
+            "username": "ojan",
+            "password": "ojan123",
+            "name": "Ojan"
+          },
+          {
+            "level":"2",
+            "access": "admin",
+            "id": "03",
+            "username": "asep",
+            "password": "asep123",
+            "name": "Asep"
+          },
+          {
+            "level":"3",
+            "access": "user",
+            "id": "04",
+            "username": "eki",
+            "password": "eki123",
+            "name": "Eki"
+          },
+          {
+            "level":"3",
+            "access": "user",
+            "id": "05",
+            "username": "ujang",
+            "password": "ujang123",
+            "name": "ujang"
+        }
+    ]
+}
